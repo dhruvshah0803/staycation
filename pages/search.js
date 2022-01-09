@@ -17,7 +17,7 @@ const Search = ({ searchResults }) => {
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
   return (
-    <div className="h-screen">
+    <div className="h-screen overflow-x-hidden">
       <Header placeholder={`${location} | ${range} | ${noOfGuests}`} />
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
@@ -72,7 +72,7 @@ const Search = ({ searchResults }) => {
 export default Search;
 
 export const getServerSideProps = async () => {
-  const searchResults = await fetch("https://jsonkeeper.com/b/5NPS").then(
+  const searchResults = await fetch("https://jsonkeeper.com/b/A2FU").then(
     (res) => res.json()
   );
 

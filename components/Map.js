@@ -15,22 +15,21 @@ const Map = ({ searchResults, className, dark }) => {
   const [viewport, setViewport] = useState({
     latitude,
     longitude,
-    zoom: 11,
+    zoom: 9,
   });
 
 
 
   const [selectedLocation, setSelectedLocation] = useState({
-    description:
-      "1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
-    img: "https://links.papareact.com/xqj",
-    lat: 51.5421655,
-    location: "Private room in center of London",
-    long: -0.0022275,
-    price: "£30 / night",
-    star: 4.73,
-    title: "Stay at this spacious Edwardian House",
-    total: "£117 total",
+      "img":"https://a0.muscache.com/im/pictures/39b5aad2-7364-4957-9671-dfc82c9131c6.jpg?im_w=1200",
+      "location":"Fagu, Himanchal Pradesh",
+      "title":"Tree house | Duplex | Balcony With Himalayan View",
+      "description":"3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+      "star":3.85,
+      "price":" ₹3428/ night",
+      "total":"₹4870 total",
+      "lat":19.748060,
+      "long":73.300851
   });
 
   return (
@@ -71,7 +70,7 @@ const Map = ({ searchResults, className, dark }) => {
               onClose={() => setSelectedLocation({})}
               latitude={result.lat}
               longitude={result.long}
-              className="w-[150px] h-[250px] z-50 rounded-lg"
+              className="w-[150px] h-[250px] rounded-lg"
             >
               <Image
               alt = "img"

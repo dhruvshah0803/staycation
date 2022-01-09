@@ -92,3 +92,84 @@ export const discoverData = [
     desc: "Find unforgettable activities near you.",
   },
 ];
+
+
+// [
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/6c0b82c0-88cc-44e6-b485-73420267d0a7.jpg?im_w=1200",
+//       "location":"Near Oberoi mall malad east",
+//       "title":"Relax/Workation Home",
+//       "description":"1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+//       "star":4.73,
+//       "price":" ₹1735 / night",
+//       "total":"₹2345 total",
+//       "lat":19.682755,
+//       "long":73.840157
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/a38aea93-1188-4776-81e0-d51aa0ea0a42.jpg?im_w=1200",
+//       "location":"Lonavala",
+//       "title":"Blended with the flora and fona",
+//       "description":"2 guest · 3 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Pool ",
+//       "star":4.3,
+//       "price":" ₹2354 / night",
+//       "total":" ₹3087 total",
+//       "lat":19.748060,
+//       "long": 73.407219
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/7ee56392-484c-4769-99e7-1a1d5c265bc1.jpg?im_w=1200",
+//       "location":"Mahableshwar",
+//       "title":"Premium valley view room at Harmony Palace",
+//       "description":"4 guest · 4 bedroom · 4 bed · 2 bathrooms · Free parking · Washing Machine",
+//       "star":3.8,
+//       "price":" ₹5324 / night",
+//       "total":" ₹6089 total",
+//       "lat":19.9978,
+//       "long":73.655602
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/c8ef21da-dd77-44d5-8d90-14b453fd6176.jpg?im_w=1200",
+//       "location":"Goa",
+//       "title":"30 mins to candolim Beach",
+//       "description":"1 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+//       "star":4.1,
+//       "price":"₹5324 / night",
+//       "total":"₹5324 total",
+//       "lat":19.9976,
+//       "long":73.827827
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/miso/Hosting-53000025/original/496057fe-49b4-4e31-9b3f-cb190b5a164f.png?im_w=1200",
+//       "location":"Shahpur, Maharashtra",
+//       "title":"Experience living in Tents",
+//       "description":"3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Free parking · Dry Cleaning",
+//       "star":5.0,
+//       "price":"₹1987 / night",
+//       "total":"£2380 total",
+//       "lat":19.9974,
+//       "long":73.7897
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/d8d629d7-9307-4b24-a8ae-b01d95e36124.jpg?im_w=1200",
+//       "location":"Vihang Farmhouse: Florican Room",
+//       "title":"Nashik Maharashtra",
+//       "description":"2 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Washing Machine",
+//       "star":4.23,
+//       "price":"₹3762/ night",
+//       "total":"₹4907 total",
+//       "lat":19.9975,
+//       "long":73.7898
+//    },
+//    {
+//       "img":"https://a0.muscache.com/im/pictures/39b5aad2-7364-4957-9671-dfc82c9131c6.jpg?im_w=1200",
+//       "location":"Fagu, Himanchal Pradesh",
+//       "title":"Tree house | Duplex | Balcony With Himalayan View",
+//       "description":"3 guest · 1 bedroom · 1 bed · 1.5 shared bthrooms · Wifi · Kitchen · Free parking · Washing Machine",
+//       "star":3.85,
+//       "price":" ₹3428/ night",
+//       "total":"₹4870 total",
+//       "lat":19.748060,
+//       "long":73.300851
+//    }
+// ]
