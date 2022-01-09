@@ -1,132 +1,135 @@
 import Image from "next/image";
-import {
-  SearchIcon,
-  GlobeAltIcon,
-  MenuIcon,
-  UserCircleIcon,
-  UserGroupIcon,
-} from "@heroicons/react/solid";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { GlobeAltIcon, MenuIcon, UserCircleIcon, UsersIcon, SearchIcon } from '@heroicons/react/solid'
+import { useState } from "react"
+import { DateRange, DateRangePicker } from 'react-date-range';
+import { useRouter } from "next/dist/client/router";
+import { useMediaQuery } from "@react-hook/media-query";
 
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
-const Header = ({ placeholder }) => {
-  const router = useRouter();
+function Header({ placeholder }) {
+    // STATE FOR REACT
+    const [searchInput, setSearchInput] = useState("")
+    const [startDate, setStartDate] = useState(new Date())
+    const [endDate, setEndDate] = useState(new Date()) //need to fix to tomorrow's date
+    const [numberOfGuests, setNumberOfGuests] = useState(1);
+    const router = useRouter()
 
-  const [searchInput, setSearchInput] = useState("");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [noOfGuests, setNoOfGuests] = useState(1);
+    const handleSelect = (ranges) => {
+        setStartDate(ranges.selection.startDate);
+        setEndDate(ranges.selection.endDate);
+    }
 
-  const Submit = () => {
-    router.push({
-      pathname: "/search",
-      query: {
-        location: searchInput,
-        startDate: startDate.toISOString(),
-        endDate: endDate.toISOString(),
-        noOfGuests,
-      },
-    });
-  };
-  const Cancel = () => {
-    setSearchInput("");
-  };
+    const resetInput = () => {
+        setSearchInput("");
+    }
 
-  const Button = ({ text, color, submit }) => (
-    <button
-      className={`text-md font-semibold flex-grow font-mono border-2 rounded-lg py-2 hover:shadow-md shadow-sm ${
-        color && "text-red-400"
-      }`}
-      onClick={submit ? Submit : Cancel}
-    >
-      {text}
-    </button>
-  );
+    const search = () => {
+        router.push({
+            pathname: "/search",
+            query: {
+                location: searchInput,
+                startDate: startDate.toISOString(),
+                endDate: endDate.toISOString(),
+                numberOfGuests,
+            } 
+        })
+    }
 
-  const selectionRange = {
-    startDate,
-    endDate,
-    key: "Selection",
-  };
+    const selectionRange = {
+        startDate: startDate,
+        endDate: endDate,
+        key: "selection",
+        minDate: new Date()
+    }
 
-  const handleSelect = (ranges) => {
-    setStartDate(ranges.Selection.startDate);
-    setEndDate(ranges.Selection.endDate);
-  };
+    //listen to small screen change for date picker
+    const isSmallScreen = useMediaQuery("(max-width: 36rem)");
 
-  return (
-    <header className="sticky top-0 x-50 items-center md:grid md:grid-cols-3 flex bg-white shadow-md p-3 md:px-10 z-50">
-      <div
+    return (
+        <header className="sticky top-0 z-50 grid grid-cols-3 bg-white shadow-md py-5 px-5 md:px-10">
+            {/* Left */}
+            <div
         className="relative flex items-center h-10 cursor-pointer my-auto animate-bounce"
         onClick={() => {
           router.push("/");
         }}
       >
-        <Image
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/2560px-Airbnb_Logo_B%C3%A9lo.svg.png"
-          objectFit="contain"
-          objectPosition="left"
-          width={100}
-          height={80}
-        />
-      </div>
-      <div className="flex flex-grow ml-4 items-center border-2 rounded-full py-2 md:shadow-sm focus-within:shadow-md">
-        <input
-          value={searchInput}
-          type="text"
-          placeholder={placeholder || "Start your search"}
-          className="pl-5 bg-transparent outline-none flex-grow text-md text-gray-600 placeholder-gray-400 text-xs sm:text-sm lg:text-md xl:text-lg"
-          onChange={(e) => {
-            setSearchInput(e.target.value);
-          }}
-        />
-        <SearchIcon className="h-8  bg-red-400 text-white rounded-full p-2 cursor-pointer hidden lg:inline-flex md:mx-2" />
-      </div>
-      <div className="space-x-4 items-center justify-end text-gray-500 hidden md:flex">
-        <p className="cursor-pointer hover:bg-gray-100 py-2 px-3 rounded-full hidden lg:inline">
-          Become a host
-        </p>
-        <GlobeAltIcon className="h-10 cursor-pointer hover:bg-gray-100 p-2 rounded-full hidden md:inline" />
-        <div className="items-center border-2 space-x-2 rounded-full p-2 cursor-pointer hover:shadow-md hidden md:flex">
-          <MenuIcon className="h-6" />
-          <UserCircleIcon className="h-6" />
-        </div>
-      </div>
-      {searchInput && (
-        <div className="md:flex flex-col col-span-3 mx-auto mt-3 hidden ">
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={new Date()}
-            rangeColors={["#fd5b61"]}
-            onChange={handleSelect}
-          />
-          <div className="flex items-center mb-4 ml-5">
-            <h2 className="text-2xl font-mono font-semibold text-gray-600 flex-grow">
-              Number of Guests
-            </h2>
-            <UserGroupIcon className="h-5 mr-4 text-gray-600" />
-            <input
-              type="number"
-              className="w-20 pl-2 text-lg outline-none border-2 text-red-400 px-2 rounded-md"
-              min={1}
-              value={noOfGuests}
-              onChange={(e) => {
-                setNoOfGuests(e.target.value);
-              }}
-            />
-          </div>
-          <div className="flex space-x-1 ml-5">
-            <Button text="Cancel" />
-            <Button text="Submit" color submit />
-          </div>
-        </div>
-      )}
-    </header>
-  );
-};
+                <Image 
+                alt = "img"
+                 src="https://links.papareact.com/qd3"
+                 layout="fill"
+                 objectFit="contain"
+                 objectPosition="left"
+                />
+            </div>
 
-export default Header;
+            {/* Middle */}
+            <div className="flex items-center md:border-2 rounded-full py-2 md:shadow-sm">
+                <input
+                    value={searchInput}
+                    onChange={(event) => setSearchInput(event.target.value)} 
+                    className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400" 
+                    type="text" 
+                    placeholder={placeholder || "Start your search"}
+                />
+                <SearchIcon 
+                    className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"
+                    onClick={search} 
+                />
+            </div>
+
+            {/* Right */}
+            <div className="flex items-center space-x-4 justify-end text-gray-500"> 
+                <p className="hidden md:inline cursor-pointer">Become a host</p>
+                <GlobeAltIcon className="h-6"/>
+                <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
+                    <MenuIcon className="h-6"/>
+                    <UserCircleIcon className="h-6"/>
+                </div>
+            </div>
+
+            {/* Date picker range */}
+            {searchInput && (
+                <div className="flex flex-col col-span-3 mx-auto mt-5">
+                    {isSmallScreen ? (
+                        <DateRange 
+                            ranges={[selectionRange]}
+                            minDate={new Date()}
+                            rangeColors={["#FD5B61"]}
+                            onChange={handleSelect}
+                        />
+                    ) : (
+                        <DateRangePicker 
+                            ranges={[selectionRange]}
+                            minDate={new Date()}
+                            rangeColors={["#FD5B61"]}
+                            onChange={handleSelect}
+                        />
+                    )}     
+                    <div className="flex items-center border-b mb-4">
+                        <h2 className="text-2xl flex-grow font-semibold">
+                            Number of Guests
+                        </h2>
+                        <UsersIcon className="h-5"/>
+                        <input
+                            value={numberOfGuests}
+                            onChange={event => setNumberOfGuests(event.target.value)} 
+                            className="w-12 pl-2 text-lg outline-none text-red-400" 
+                            type="number"
+                            min={1}
+                        />
+                    </div>
+                    <div className="flex">
+                        <button onClick={resetInput} className="flex-grow text-gray-500">Cancel</button>
+                        <button onClick={search} className="flex-grow text-red-400">Search</button>
+                    </div>
+                </div>
+            )}
+
+        </header>
+    )
+}
+
+export default Header
