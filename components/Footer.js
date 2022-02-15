@@ -21,7 +21,7 @@ const Footer = () => {
         <h5 className="font-bold">HOST</h5>
         <p>Host your home</p>
         <p>Site hosted on vercel</p>
-        <p>Created by Rohit Ingole</p>
+        <p>Created by Dhruv Shah</p>
         <p>Completely Responsive</p>
         <p>Resource Center</p>
       </div>
